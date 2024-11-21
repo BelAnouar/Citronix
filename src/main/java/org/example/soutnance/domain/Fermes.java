@@ -2,6 +2,7 @@ package org.example.soutnance.domain;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
 import lombok.*;
 import org.example.soutnance.domain.base.BaseEntity;
 
@@ -11,30 +12,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-@Entity
+
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Entity
 public class Fermes extends BaseEntity {
 
+    @Column(nullable = false)
+    private String nom;
 
     @Column(nullable = false)
-    private String name;
+    private String localisation;
 
     @Column(nullable = false)
-    private String location;
+    @Min(value = 1000, message = "La superficie de la ferme doit être d'au moins 1000 mètres carrés")
+    private BigDecimal superficieTotale;
 
     @Column(nullable = false)
-    @Min(value = 1000, message = "Farm area must be at least 1000 square meters")
-    private BigDecimal totalArea;
+    private LocalDate dateCreation;
 
-    @Column(nullable = false)
-    private LocalDate creationDate;
-
-    @OneToMany(mappedBy = "farm", cascade = CascadeType.ALL)
-    private List<Champs> fields = new ArrayList<>();
+    @OneToMany(mappedBy = "ferme", cascade = CascadeType.ALL)
+    private List<Champs> champs = new ArrayList<>();
 
 
 }
