@@ -1,9 +1,8 @@
 package org.example.soutnance.mapper;
 
 
-import org.example.soutnance.domain.Arbares;
+
 import org.example.soutnance.domain.Recoltes;
-import org.example.soutnance.dto.request.ArbaresRequest;
 import org.example.soutnance.dto.request.RecoltesRequest;
 import org.example.soutnance.dto.response.RecoltesResponse;
 import org.mapstruct.BeanMapping;
