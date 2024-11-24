@@ -29,7 +29,6 @@ public class RecolteServiceImpl implements RecolteService {
     @Override
     public RecoltesResponse createRecolte(RecoltesRequest request) {
 
-        // Check if champ exists
         var champ = champRepository.findById(request.getChamp_id())
                 .orElseThrow(() -> new ResourceNotFoundException("Champ not found with id: " + request.getChamp_id()));
 

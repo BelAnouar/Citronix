@@ -29,7 +29,7 @@ public class Fermes extends BaseEntity {
 
     @Column(nullable = false)
     @Min(value = 1000, message = "La superficie de la ferme doit être d'au moins 1000 mètres carrés")
-    private BigDecimal superficieTotale;
+    private Double superficieTotale;
 
     @Column(nullable = false)
     private LocalDate dateCreation;

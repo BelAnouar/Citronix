@@ -11,6 +11,6 @@ public interface FermeService {
     FermesResponse createFermeRepository(FermesRequest fermesRequest);
     Page<FermesResponse> findAllFermes(Pageable pageable);
     FermesResponse findFermeById(Long id);
-    FermesResponse deleteFermeById(Long id);
+    void deleteFermeById(Long id);
     FermesResponse updateFermeById(Long id, FermesRequest fermesRequest);
 }

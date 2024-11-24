@@ -11,5 +11,5 @@ public interface ChampService {
     Page<ChampResponse> getChamps(Pageable pageable);
     ChampResponse getChamp(Long id);
     ChampResponse updateChamp(Long id, ChampsRequest champsRequest);
-    ChampResponse deleteChamp(Long id);
+    void deleteChamp(Long id);
 }

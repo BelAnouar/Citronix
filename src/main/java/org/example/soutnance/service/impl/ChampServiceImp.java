@@ -48,9 +48,8 @@ public class ChampServiceImp implements ChampService {
     }
 
     @Override
-    public ChampResponse deleteChamp(Long id) {
+    public void deleteChamp(Long id) {
 
         champRepository.deleteById(id);
-        return null;
     }
 }

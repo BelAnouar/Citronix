@@ -55,7 +55,7 @@ public class ArbreServiceImpl implements ArbreService {
     public ArbaresResponse getArbre(Long id) {
         return arbreRepository.findById(id)
                 .map(arbreMapper::toResponse)
-                .orElseThrow(() -> new ResourceNotFoundException("Arbre id"+String.valueOf(id)));
+                .orElseThrow(() -> new ResourceNotFoundException("Arbre id"+id));
     }
 
     @Override

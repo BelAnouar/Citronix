@@ -23,5 +23,5 @@ public class DetailRecoltes extends BaseEntity {
     private Recoltes recolte;
 
     @Column(nullable = false)
-    private int quantite;
+    private Double quantite;
 }

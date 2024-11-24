@@ -31,7 +31,7 @@ public class FermesRequest {
 
     @NotNull(message = "superficieTotale est obligatoire")
     @Positive(message = "superficieTotale doit être positif")
-    private BigDecimal superficieTotale;
+    private Double superficieTotale;
 
     @NotNull(message = "dateCreation est obligatoire")
     private LocalDate dateCreation;
