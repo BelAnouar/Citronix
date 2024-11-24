@@ -16,8 +16,6 @@ import java.time.LocalDate;
 @Builder
 public class ArbaresRequest {
 
-
-
    @NotNull(message = "data De plantation est")
     private LocalDate dateDeplantation;
 

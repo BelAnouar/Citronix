@@ -8,6 +8,9 @@ import org.example.soutnance.dto.request.ArbaresRequest;
 import org.example.soutnance.dto.response.ArbaresResponse;
 import org.mapstruct.*;
 
+import java.time.LocalDate;
+import java.time.Period;
+
 @Mapper(componentModel = "spring")
 public interface ArbreMapper {
 
@@ -22,8 +25,15 @@ public interface ArbreMapper {
         champ.setId(id);
         return champ;
     }
+
+    @Mapping(target = "age", expression = "java(calculateAge(arbre.getDatePlantation()))")
     ArbaresResponse toResponse(Arbares arbares);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     void updateEntity(@MappingTarget Arbares entity, ArbaresRequest request);
+
+    @Named("calculateAge")
+    default int calculateAge(LocalDate datePlantation) {
+        return Period.between(datePlantation, LocalDate.now()).getYears();
+    }
 }

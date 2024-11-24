@@ -14,7 +14,7 @@ import java.math.BigDecimal;
 public class ChampsRequest {
 
     @NotNull(message = "la superficie est obligatoire")
-    private BigDecimal superficie;
+    private Double superficie;
 
 
     @NotNull(message = "ferme_id est obligatoire")

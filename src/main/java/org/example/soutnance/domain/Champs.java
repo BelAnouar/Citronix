@@ -24,7 +24,7 @@ public class Champs extends BaseEntity {
 
     @Column(nullable = false)
     @Min(value = 1000, message = "La superficie du champ doit être d'au moins 1000 mètres carrés")
-    private BigDecimal superficie;
+    private Double superficie;
 
     @OneToMany(mappedBy = "champ", cascade = CascadeType.ALL)
     private List<Arbares> arbres = new ArrayList<>();

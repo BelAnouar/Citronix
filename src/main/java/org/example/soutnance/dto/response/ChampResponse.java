@@ -23,7 +23,7 @@ import java.util.List;
 @Builder
 public class ChampResponse {
     private Long id;
-    private BigDecimal superficie;
+    private Double superficie;
     private List<Arbares> arbres = new ArrayList<>();
     private List<Recoltes> recoltes = new ArrayList<>();
     private FermeResponse ferme;

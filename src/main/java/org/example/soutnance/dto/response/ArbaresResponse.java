@@ -13,10 +13,10 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Builder
 public class ArbaresResponse {
-
+    private Long id;
     private Champs champ;
 
-
+    private int age;
     private LocalDate dateDeplantation;
 
 }
