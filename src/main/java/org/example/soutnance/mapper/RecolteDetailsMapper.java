@@ -3,11 +3,11 @@ package org.example.soutnance.mapper;
 
 import org.example.soutnance.domain.Arbares;
 import org.example.soutnance.domain.DetailRecoltes;
+
 import org.example.soutnance.dto.request.RecolteDetailRequest;
+
 import org.example.soutnance.dto.response.RecolteDetailResponse;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Named;
+import org.mapstruct.*;
 
 @Mapper(componentModel = "spring")
 public interface RecolteDetailsMapper {
@@ -26,4 +26,8 @@ public interface RecolteDetailsMapper {
     @Mapping(target = "arbre_id", source = "arbre.id")
     @Mapping(target = "recolte_id", source = "recolte.id")
     RecolteDetailResponse toResponse(DetailRecoltes recolteDetail);
+
+
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    void updateEntity(@MappingTarget DetailRecoltes entity, RecolteDetailRequest request);
 }

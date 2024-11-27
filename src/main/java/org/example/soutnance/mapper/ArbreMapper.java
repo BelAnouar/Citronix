@@ -26,14 +26,14 @@ public interface ArbreMapper {
         return champ;
     }
 
-    @Mapping(target = "age", expression = "java(calculateAge(arbre.getDatePlantation()))")
+    @Mapping(target = "age", expression = "java(calculateAge(arbares.getDateDeplantation()))") // Corrected field
     ArbaresResponse toResponse(Arbares arbares);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     void updateEntity(@MappingTarget Arbares entity, ArbaresRequest request);
 
     @Named("calculateAge")
-    default int calculateAge(LocalDate datePlantation) {
-        return Period.between(datePlantation, LocalDate.now()).getYears();
+    default int calculateAge(LocalDate dateDeplantation) { // Adjusted parameter name for clarity
+        return Period.between(dateDeplantation, LocalDate.now()).getYears();
     }
 }

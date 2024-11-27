@@ -31,8 +31,8 @@ public class Recoltes extends BaseEntity {
     @Column(nullable = false)
     private LocalDate dateRecolte;
 
-    @Column(nullable = false)
-    private BigDecimal quantiteTotale;
+
+    private Double quantiteTotale;
 
     @OneToMany(mappedBy = "recolte", cascade = CascadeType.ALL)
     private List<DetailRecoltes> detailsRecolte = new ArrayList<>();

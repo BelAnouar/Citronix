@@ -25,13 +25,13 @@ public class FermesServiceImpl implements FermeService {
 
     private final FermeRepository fermeRepository;
     private final FermeMapper fermeMapper;
-
+    private static final String MESSAGE_ERROR = "Failed to create farm:";
 
     @Override
     public FermesResponse createFermeRepository(FermesRequest fermesRequest) {
         log.debug("Creating new farm with request: {}", fermesRequest);
 
-        if (fermeRepository.existsByName(fermesRequest.getNom())) {
+        if (fermeRepository.existsByNom(fermesRequest.getNom())) {
             throw new BusinessException("Farm with name " + fermesRequest.getNom() + " already exists");
         }
 
@@ -63,7 +63,7 @@ public class FermesServiceImpl implements FermeService {
         log.debug("Fetching farm with id: {}", id);
         return fermeRepository.findById(id)
                 .map(fermeMapper::toResponse)
-                .orElseThrow(() -> new ResourceNotFoundException("Farm not found with id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException(MESSAGE_ERROR + id));
     }
 
     @Override
@@ -71,7 +71,7 @@ public class FermesServiceImpl implements FermeService {
         log.debug("Deleting farm with id: {}", id);
         try {
             if (!fermeRepository.existsById(id)) {
-                throw new ResourceNotFoundException("Farm not found with id: " + id);
+                throw new ResourceNotFoundException(MESSAGE_ERROR + id);
             }
 
             if (fermeRepository.hasFarmAnyFields(id)) {
@@ -96,7 +96,7 @@ public class FermesServiceImpl implements FermeService {
                 .orElseThrow(() -> new ResourceNotFoundException("Farm not found with id: " + id));
 
         if (!existingFerme.getNom().equals(fermesRequest.getNom()) &&
-                fermeRepository.existsByNameAndIdNot(fermesRequest.getNom(), id)) {
+                fermeRepository.existsByNomAndIdNot(fermesRequest.getNom(), id)) {
             throw new BusinessException("Farm with name " + fermesRequest.getNom() + " already exists");
         }
 

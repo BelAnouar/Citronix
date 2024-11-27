@@ -6,7 +6,7 @@ import jakarta.validation.constraints.Min;
 import lombok.*;
 import org.example.soutnance.domain.base.BaseEntity;
 
-import java.math.BigDecimal;
+
 import java.util.ArrayList;
 import java.util.List;
 

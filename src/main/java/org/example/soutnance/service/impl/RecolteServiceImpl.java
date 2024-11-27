@@ -38,7 +38,7 @@ public class RecolteServiceImpl implements RecolteService {
 
         var recolte = recolteMapper.toEntity(request);
         recolte = recolteRepository.save(recolte);
-
+  recolte.setQuantiteTotale(0.0);
         return recolteMapper.toResponse(recolte);
     }
 
@@ -57,10 +57,7 @@ public class RecolteServiceImpl implements RecolteService {
 
     @Override
     public RecoltesResponse updateRecolte(Long id, RecoltesRequest request) {
-
-
-
-        var recolte = recolteRepository.findById(id)
+                var recolte = recolteRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Recolte not found with id: " + id));
 
 

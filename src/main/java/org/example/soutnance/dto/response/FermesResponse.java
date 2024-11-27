@@ -1,15 +1,15 @@
 package org.example.soutnance.dto.response;
 
-import jakarta.validation.constraints.NotBlank;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.example.soutnance.domain.Champs;
+
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.ArrayList;
+
 import java.util.List;
 
 
@@ -26,11 +26,21 @@ private Long id;
     private String localisation;
 
 
-    private BigDecimal superficieTotale;
+    private Double superficieTotale;
 
 
     private LocalDate dateCreation;
 
 
-    private List<Champs> champs = new ArrayList<>();
+    private  ChampsRes champs ;
+
+
+    @Data
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @Builder
+    public static class ChampsRes {
+        private Long id;
+        private Double superficie;
+    }
 }

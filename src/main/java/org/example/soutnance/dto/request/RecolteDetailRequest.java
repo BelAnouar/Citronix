@@ -12,4 +12,5 @@ import lombok.NoArgsConstructor;
 public class RecolteDetailRequest {
     private Long arbre_id;
     private Double quantite;
+    private Long recolte_id;
 }

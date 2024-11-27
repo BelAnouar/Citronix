@@ -8,9 +8,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface FermeRepository extends JpaRepository<Fermes ,Long> {
-    boolean existsByName(String name);
+    boolean existsByNom(String nom);
 
-    boolean existsByNameAndIdNot(String name, Long id);
+    boolean existsByNomAndIdNot(String Nom, Long id);
 
     @Query("SELECT CASE WHEN COUNT(c) > 0 THEN true ELSE false END FROM Champs c WHERE c.ferme.id = :fermeId")
     boolean hasFarmAnyFields(@Param("fermeId") Long fermeId);

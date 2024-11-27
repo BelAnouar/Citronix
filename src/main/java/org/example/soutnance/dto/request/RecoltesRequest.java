@@ -20,8 +20,7 @@ public class RecoltesRequest {
     private LocalDate dateRecolte;
 
     private Saison saison;
-
-    private BigDecimal quantiteTotale;
+    private Double quantite_totale;
 
     private Long champ_id;
 
