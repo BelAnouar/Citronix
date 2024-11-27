@@ -21,6 +21,9 @@ import java.util.List;
 @Entity
 public class Fermes extends BaseEntity {
 
+    @Transient
+    private  Long id;
+
     @Column(nullable = false)
     private String nom;
 
@@ -36,6 +39,7 @@ public class Fermes extends BaseEntity {
 
     @OneToMany(mappedBy = "ferme", cascade = CascadeType.ALL)
     private List<Champs> champs = new ArrayList<>();
+
 
 
 }

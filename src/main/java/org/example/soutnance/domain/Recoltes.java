@@ -19,6 +19,8 @@ import java.util.List;
 @Builder
 public class Recoltes extends BaseEntity {
 
+    @Transient
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "champ_id", nullable = false)

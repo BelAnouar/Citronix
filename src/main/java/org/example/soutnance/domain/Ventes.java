@@ -25,16 +25,16 @@ public class Ventes extends BaseEntity {
     private LocalDate dateVente;
 
     @Column(nullable = false)
-    private BigDecimal quantite;
+    private Double quantite;
 
     @Column(nullable = false)
-    private BigDecimal prixUnitaire;
+    private Double prixUnitaire;
 
     @Column(nullable = false)
     private String nomClient;
 
-    public BigDecimal calculerRevenu() {
-        return quantite.multiply(prixUnitaire);
+    public double calculerRevenu() {
+        return quantite * prixUnitaire;
     }
 
 }

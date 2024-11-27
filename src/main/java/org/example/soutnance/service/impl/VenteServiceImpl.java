@@ -4,6 +4,7 @@ package org.example.soutnance.service.impl;
 import lombok.RequiredArgsConstructor;
 import org.example.soutnance.dto.request.VentesRequest;
 import org.example.soutnance.dto.response.VentesResponse;
+import org.example.soutnance.exception.BusinessException;
 import org.example.soutnance.exception.ResourceNotFoundException;
 import org.example.soutnance.mapper.VenteMapper;
 import org.example.soutnance.repository.RecolteRepository;
@@ -26,10 +27,15 @@ public class VenteServiceImpl implements VenteService {
 
     @Override
     public VentesResponse createVente(VentesRequest request) {
-
         var recolte = recolteRepository.findById(request.getRecolte_id())
                 .orElseThrow(() -> new ResourceNotFoundException("Harvest not found with id: " + request.getRecolte_id()));
 
+
+        Double totalSaleQuantity = venteRepository.calculateTotalQuantityForRecolte(recolte.getId())
+                .orElse(0.0) + request.getQuantite();
+        if (totalSaleQuantity > recolte.getQuantiteTotale()) {
+            throw new BusinessException("Total sale quantity cannot exceed the harvest total quantity");
+        }
 
         var vente = venteMapper.toEntity(request);
         vente.setRecolte(recolte);
@@ -53,15 +59,19 @@ public class VenteServiceImpl implements VenteService {
 
     @Override
     public VentesResponse updateVente(Long id, VentesRequest request) {
-
-
         var vente = venteRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Sale not found with id: " + id));
-
 
         if (!vente.getRecolte().getId().equals(request.getRecolte_id())) {
             recolteRepository.findById(request.getRecolte_id())
                     .orElseThrow(() -> new ResourceNotFoundException("Harvest not found with id: " + request.getRecolte_id()));
+
+
+            Double totalSaleQuantity = venteRepository.calculateTotalQuantityForRecolte(request.getRecolte_id())
+                    .orElse(0.0) - vente.getQuantite() + request.getQuantite();
+            if (totalSaleQuantity > vente.getRecolte().getQuantiteTotale()) {
+                throw new BusinessException("Total sale quantity cannot exceed the harvest total quantity");
+            }
         }
 
         venteMapper.updateEntity(vente, request);
@@ -77,5 +87,4 @@ public class VenteServiceImpl implements VenteService {
         }
         venteRepository.deleteById(id);
     }
-
 }

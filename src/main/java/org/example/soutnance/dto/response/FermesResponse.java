@@ -20,20 +20,12 @@ import java.util.List;
 @Builder
 public class FermesResponse {
 
-private Long id;
+    private Long id;
     private String nom;
-
     private String localisation;
-
-
-    private Double superficieTotale;
-
-
+    private double superficieTotale;
     private LocalDate dateCreation;
-
-
-    private  ChampsRes champs ;
-
+    private List<ChampsRes> champs;
 
     @Data
     @AllArgsConstructor

@@ -16,6 +16,8 @@ import java.time.LocalDate;
 @Builder
 public class RecoltesResponse {
 
+
+    private Long id;
     private LocalDate dateRecolte;
 
     private Saison saison;

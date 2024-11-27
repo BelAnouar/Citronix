@@ -17,7 +17,8 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 public class Champs extends BaseEntity {
-
+    @Transient
+    private  Long id;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ferme_id", nullable = false)
     private Fermes ferme;
@@ -31,6 +32,8 @@ public class Champs extends BaseEntity {
 
     @OneToMany(mappedBy = "champ", cascade = CascadeType.ALL)
     private List<Recoltes> recoltes = new ArrayList<>();
+
+
 
 
 
