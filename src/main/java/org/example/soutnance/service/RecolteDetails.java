@@ -11,6 +11,6 @@ public interface RecolteDetails {
      RecolteDetailResponse createRecolteDetail( RecolteDetailRequest request);
     Page<RecolteDetailResponse> getAllRecolteDetails(Pageable pageable);
     RecolteDetailResponse getRecolteDetails(Long id);
-    RecolteDetailResponse updateRecolteDetails(Long id, RecolteDetailRequest recolteDetailRequest);
+
     void deleteRecolteDetails(Long id);
 }

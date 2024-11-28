@@ -73,10 +73,7 @@ public class RecolteDetailsImpl implements RecolteDetails {
         return recolteDetailMapper.toResponse(recoltes);
     }
 
-    @Override
-    public RecolteDetailResponse updateRecolteDetails(Long id, RecolteDetailRequest recolteDetailRequest) {
-        return null;
-    }
+
 
     @Override
     public void deleteRecolteDetails(Long id) {
